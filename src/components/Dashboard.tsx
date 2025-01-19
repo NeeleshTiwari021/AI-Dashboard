@@ -4,6 +4,7 @@ import { fetchAIData } from '../redux/aiDataSlice';
 import { RootState, AppDispatch } from '../redux/store';
 import BarChartComponent from './charts/BarChartComponent';
 import LineChartComponent from './charts/LineChartComponent';
+import PieChartComponent from './charts/PieChartComponent';
 import '../styles/Dashboard.scss';
 
 const Dashboard: React.FC = () => {
@@ -22,6 +23,7 @@ const Dashboard: React.FC = () => {
       {data && (
         <div className="dashboard__charts">
           <div className="dashboard__card">
+            <h3>Category Distribution</h3>
             <BarChartComponent
               data={Object.entries(data.category_distribution).map(([name, value]) => ({
                 name,
@@ -30,7 +32,17 @@ const Dashboard: React.FC = () => {
             />
           </div>
           <div className="dashboard__card">
+            <h3>Response Times (Day Wise)</h3>
             <LineChartComponent data={data.response_times.day_wise} />
+          </div>
+          <div className="dashboard__card">
+            <h3>User Satisfaction</h3>
+            <PieChartComponent
+              data={data.user_satisfaction.ratings.map((item: { rating: any; count: any; }) => ({
+                name: `Rating ${item.rating}`,
+                value: item.count,
+              }))}
+            />
           </div>
         </div>
       )}
