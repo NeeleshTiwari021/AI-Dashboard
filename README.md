@@ -118,4 +118,6 @@ src/
 ## Contact
 For any queries or feedback, please contact:
 - **Email**: neeleshishu021@gmail.com
+- **Link**: https://ai-dashboard-beta.vercel.app/
+- **Video**: https://youtu.be/zLDE_Uoj3Gw
 
